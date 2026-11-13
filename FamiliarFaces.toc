@@ -1,0 +1,7 @@
+## Interface: 16001
+## Title: Familiar Faces
+## Notes: Remembers who you played with, which zones and which quests.
+## Author: LankyFranky89
+## Version: 1.0.0
+## SavedVariables: FamiliarFacesDB
+FamiliarFaces.lua
