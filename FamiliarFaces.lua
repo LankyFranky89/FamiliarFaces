@@ -1,3 +1,7 @@
+local function Secret(v) -- chat hidden by the game (or faked by /cc secret)
+  if CopyCatFakeSecret and CopyCatFakeSecret > GetTime() then return true end
+  return issecretvalue ~= nil and issecretvalue(v) == true
+end
 -- Familiar Faces: remembers who you grouped with, where, and on which quests.
 local ADDON = ...
 local f = CreateFrame("Frame")
@@ -382,7 +386,7 @@ end
 -- Whisper alert -----------------------------------------------------------
 local whisperSeen = {}
 local function OnWhisper(sender)
-  if not DB.whisper or not sender then return end
+  if not DB.whisper or not sender or Secret(sender) then return end
   local key = KeyFromNameRealm(sender, nil)
   if not key or active[key] then return end
   local p = DB.players[key]
